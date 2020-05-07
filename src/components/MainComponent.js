@@ -5,7 +5,6 @@ import DishDetail from './DishdetailComponent';
 import { DISHES } from '../shared/dishes';
 
 class Main extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -13,11 +12,9 @@ class Main extends Component {
         selectedDish: null
     };
   }
-
   onDishSelect(dishId) {
     this.setState({ selectedDish: dishId});
   }
-
   render() {
     return (
       <div>
