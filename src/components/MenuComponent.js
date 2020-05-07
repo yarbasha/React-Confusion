@@ -12,7 +12,7 @@ const RenderMenuItem = ({ dish, onClick }) => (
 const Menu = ({ dishes, onClick }) => {
   const menu = dishes.map(dish => (
     <div key={dish.id} className="col-12 col-md-5 mt-1">
-      <RenderMenuItem dish={dish} onClick={onClick} />
+      <RenderMenuItem dish={dish} />
     </div>
   ));
   return (
