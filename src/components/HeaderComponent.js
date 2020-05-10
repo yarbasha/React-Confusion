@@ -23,7 +23,7 @@ class Header extends Component {
   render() {
     return (
       <>
-        <Navbar dark expand="md">
+        <Navbar dark expand="sm">
           <div className="container">
             <NavbarBrand className="mr-auto" href="/">
               <img src="/assets/images/logo.png" height="30" width="41" alt="Ristorante Con Fusion" />
