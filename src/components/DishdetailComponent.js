@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, CardImg, CardBody, CardTitle, CardText, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from "react-redux-form";
-
+import { Loading } from './LoadingComponent';
 const RenderDish = ({ dish }) => {
   if (dish != null) {
     return (
@@ -48,23 +48,41 @@ const RenderComments = ({ comments, addComment, dishId }) => {
     return <div></div>
   }
 };
-const DishDetail = ({ dish, comments, addComment }) => {
-  if (dish != null) {
+const DishDetail = (props) => {
+  if (props.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  }
+  else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  }
+  else if (props.dish != null) {
     return (
       <div className="container">
         <div className="row">
           <Breadcrumb>
             <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-            <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+            <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
           </Breadcrumb>
           <div className="col-12">
-            <h3>{dish.name}</h3>
+            <h3>{props.dish.name}</h3>
             <hr />
           </div>
         </div>
         <div className="row">
-          <RenderDish dish={dish} />
-          <RenderComments comments={comments} addComment={addComment} dishId={dish.id} />
+          <RenderDish dish={props.dish} />
+          <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
         </div>
       </div>
     );
